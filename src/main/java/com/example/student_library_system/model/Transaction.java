@@ -1,5 +1,6 @@
 package com.example.student_library_system.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -26,10 +27,12 @@ public class Transaction {
     @Column(name="transaction_type", nullable = false)
     private String transactionType;
 
+    @JsonBackReference
     @JoinColumn
     @ManyToOne
     private Card card;
 
+    @JsonBackReference
     @JoinColumn
     @ManyToOne
     private Book book;
